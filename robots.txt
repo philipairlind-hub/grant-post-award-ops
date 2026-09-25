@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://philipairlind-hub.github.io/grant-post-award-ops/sitemap.xml
