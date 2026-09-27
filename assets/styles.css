@@ -168,3 +168,14 @@ footer { padding: 54px 0 22px; background: #f3f6f9; }
   .register-row .status { grid-column: 2; justify-self: start; }
   .register-footer { gap: 10px; }
 }
+
+/* 7-day setup offer (2026-09-27) */
+.price-card .button + .button { margin-top: 10px; }
+.fineprint { margin: 22px 0 0; color: var(--muted); font-size: .9rem; }
+.option-card { margin-top: 34px; padding: 26px 32px; display: flex; align-items: center; justify-content: space-between; gap: 28px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 6px; }
+.option-card p { margin: 8px 0 0; color: var(--muted); max-width: 760px; }
+.link-list { margin: 0; padding: 0; list-style: none; }
+.link-list li { padding: 12px 0; border-top: 1px solid var(--line); }
+.link-list a { color: var(--blue); font-weight: 700; }
+.register-icon { font-size: .95rem; }
+@media (max-width: 700px) { .option-card { flex-direction: column; align-items: flex-start; padding: 22px; } }
