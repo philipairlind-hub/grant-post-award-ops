@@ -3,335 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0b1220">
-  <title>Ecommerce Catalogue Rescue — WooCommerce catalogue cleanup for agencies</title>
-  <meta name="description" content="White-label WooCommerce product catalogue cleanup, QA and import preparation for UK web and ecommerce agencies. Fixed-scope pilot from £195.">
+  <meta name="theme-color" content="#f3f1eb">
+  <title>Ecommerce Catalogue Rescue — Product catalogue cleanup for agencies</title>
+  <meta name="description" content="White-label product catalogue cleanup, QA and WooCommerce import preparation for UK web and ecommerce agencies. Fixed-scope pilot: £195.">
   <meta property="og:title" content="Ecommerce Catalogue Rescue">
-  <meta property="og:description" content="White-label product catalogue cleanup and WooCommerce import preparation for UK agencies.">
+  <meta property="og:description" content="Product catalogue cleanup and WooCommerce import preparation for UK agencies.">
   <meta property="og:type" content="website">
-  <style>
-    :root{
-      --ink:#0b1220;
-      --ink-2:#111b2d;
-      --text:#172033;
-      --muted:#667085;
-      --muted-2:#98a2b3;
-      --line:#e6e9ef;
-      --soft:#f7f8fb;
-      --soft-blue:#eef4ff;
-      --blue:#345cf5;
-      --blue-dark:#2448d8;
-      --green:#138a63;
-      --white:#fff;
-      --shadow:0 18px 60px rgba(11,18,32,.08);
-      --radius:20px;
-      --radius-sm:14px;
-      --max:1180px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:#fff;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
-    .topbar{background:var(--ink);color:#d7dce7;font-size:13px;letter-spacing:.01em}
-    .topbar .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:9px 0}
-    .topbar strong{color:#fff;font-weight:650}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid rgba(230,233,239,.8)}
-    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:760;letter-spacing:-.025em;font-size:18px}
-    .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(145deg,#345cf5,#6e8aff);display:grid;place-items:center;box-shadow:0 7px 18px rgba(52,92,245,.24)}
-    .mark svg{width:18px;height:18px;stroke:#fff}
-    .navlinks{display:flex;align-items:center;gap:28px}
-    .navlinks a{font-size:14px;color:#475467;text-decoration:none}
-    .navlinks a:hover{color:var(--ink)}
-    .nav-cta{padding:10px 15px;border-radius:10px;background:var(--ink);color:#fff!important;font-weight:650}
-    .hero{padding:86px 0 62px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(330px,.72fr);gap:72px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:720;color:#2948c6;background:var(--soft-blue);border:1px solid #dbe5ff;border-radius:999px;padding:7px 11px}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(19,138,99,.1)}
-    h1{margin:20px 0 20px;font-size:clamp(44px,5.2vw,70px);line-height:.99;letter-spacing:-.052em;color:var(--ink);max-width:820px;font-weight:760}
-    .lead{font-size:20px;line-height:1.55;color:#5d6676;max-width:760px;margin:0}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:11px;padding:13px 17px;font-size:15px;font-weight:680;transition:.16s ease}
-    .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 24px rgba(11,18,32,.16)}
-    .btn-primary:hover{background:#16223a;transform:translateY(-1px)}
-    .btn-secondary{border:1px solid #d8dde6;color:#344054;background:#fff}
-    .btn-secondary:hover{border-color:#b8c0ce;background:#fafbfc}
-    .micro{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:13px;color:#667085}
-    .micro span{display:flex;align-items:center;gap:7px}
-    .micro svg{width:16px;height:16px;stroke:#138a63}
-    .offer-card{position:relative;background:var(--ink);color:#fff;border-radius:24px;padding:29px;box-shadow:0 25px 70px rgba(11,18,32,.24);overflow:hidden}
-    .offer-card:before{content:"";position:absolute;right:-80px;top:-100px;width:220px;height:220px;background:radial-gradient(circle,rgba(91,126,255,.38),rgba(91,126,255,0) 68%)}
-    .offer-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#9db1ff;font-weight:750}
-    .price{display:flex;align-items:end;gap:9px;margin:11px 0 4px}
-    .price strong{font-size:48px;line-height:1;font-weight:760;letter-spacing:-.05em}
-    .price span{font-size:14px;color:#b9c2d3;margin-bottom:5px}
-    .offer-sub{color:#c7cede;font-size:15px;margin:0 0 22px}
-    .offer-rule{height:1px;background:rgba(255,255,255,.13);margin:20px 0}
-    .checklist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-    .checklist li{display:flex;gap:10px;align-items:flex-start;color:#edf1f8;font-size:14px}
-    .checklist svg{flex:0 0 auto;width:17px;height:17px;stroke:#8eb4ff;margin-top:2px}
-    .offer-note{margin:22px 0 0;font-size:12px;line-height:1.55;color:#9da9bc}
-    .trust-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfcfe}
-    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-    .trust-item{padding:22px 24px;border-right:1px solid var(--line)}
-    .trust-item:last-child{border-right:0}
-    .trust-item strong{display:block;font-size:14px;color:var(--ink);margin-bottom:4px}
-    .trust-item span{font-size:13px;color:#7b8493}
-    section{padding:82px 0}
-    .section-head{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:end;margin-bottom:34px}
-    .section-kicker{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.11em;color:var(--blue)}
-    h2{font-size:clamp(32px,3.3vw,46px);line-height:1.08;letter-spacing:-.042em;color:var(--ink);margin:8px 0 0;font-weight:730}
-    .section-copy{color:#667085;font-size:17px;margin:0;max-width:660px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:26px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
-    .card-icon{width:42px;height:42px;border-radius:12px;background:var(--soft-blue);display:grid;place-items:center;margin-bottom:19px}
-    .card-icon svg{width:20px;height:20px;stroke:var(--blue)}
-    .card h3{margin:0 0 9px;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
-    .card p{margin:0;color:#667085;font-size:14px}
-    .process{background:var(--soft)}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
-    .step{padding:30px;position:relative}
-    .step+.step{border-left:1px solid var(--line)}
-    .step-num{font-size:12px;font-weight:760;color:var(--blue);margin-bottom:34px;letter-spacing:.1em;text-transform:uppercase}
-    .step h3{font-size:19px;color:var(--ink);letter-spacing:-.02em;margin:0 0 10px}
-    .step p{font-size:14px;color:#667085;margin:0}
-    .scope-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-    .scope-card{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff}
-    .scope-card.dark{background:var(--ink);border-color:var(--ink);color:#fff}
-    .scope-card h3{font-size:22px;letter-spacing:-.03em;margin:0 0 18px;color:var(--ink)}
-    .scope-card.dark h3{color:#fff}
-    .scope-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-    .scope-list li{display:flex;gap:10px;font-size:14px;color:#526071}
-    .scope-card.dark .scope-list li{color:#d4dbea}
-    .scope-list svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;stroke:var(--green)}
-    .scope-card.dark .scope-list svg{stroke:#9fb8ff}
-    .data-note{margin-top:18px;background:#f9fafb;border:1px solid var(--line);border-radius:14px;padding:17px 19px;font-size:13px;color:#667085}
-    .data-note strong{color:#344054}
-    .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
-    .faq-list{border-top:1px solid var(--line)}
-    .faq-item{padding:22px 0;border-bottom:1px solid var(--line)}
-    .faq-item h3{font-size:16px;margin:0 0 8px;color:var(--ink);letter-spacing:-.01em}
-    .faq-item p{font-size:14px;color:#667085;margin:0}
-    .contact{padding:0 0 82px}
-    .contact-panel{background:linear-gradient(135deg,#0b1220,#17233c);border-radius:24px;padding:48px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:34px;position:relative;overflow:hidden}
-    .contact-panel:after{content:"";position:absolute;right:-110px;bottom:-150px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(77,112,255,.32),rgba(77,112,255,0) 68%)}
-    .contact-panel h2{color:#fff;margin:0 0 12px;max-width:620px}
-    .contact-panel p{margin:0;color:#c5cddd;max-width:660px;font-size:15px}
-    .contact-panel .btn{background:#fff;color:var(--ink);position:relative;z-index:1;white-space:nowrap}
-    footer{border-top:1px solid var(--line);padding:28px 0 42px;color:#7b8493;font-size:12px}
-    .footer-main{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
-    .footer-brand{color:#344054;font-weight:700;font-size:13px;margin-bottom:7px}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
-    .footer-links a{text-decoration:none;color:#667085}
-    .footer-links a:hover{color:var(--ink)}
-    .legal{margin-top:18px;max-width:900px;line-height:1.6}
-    @media(max-width:900px){
-      .navlinks a:not(.nav-cta){display:none}
-      .hero{grid-template-columns:1fr;gap:36px;padding-top:58px}
-      .offer-card{max-width:620px}
-      .trust-grid{grid-template-columns:1fr 1fr}
-      .trust-item:nth-child(2){border-right:0}.trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
-      .section-head,.faq{grid-template-columns:1fr;gap:20px}
-      .cards,.steps{grid-template-columns:1fr}
-      .step+.step{border-left:0;border-top:1px solid var(--line)}
-      .scope-wrap{grid-template-columns:1fr}
-      .contact-panel{align-items:flex-start;flex-direction:column}
-    }
-    @media(max-width:600px){
-      .wrap{width:min(var(--max),calc(100% - 28px))}
-      .topbar .wrap{align-items:flex-start;flex-direction:column;gap:2px;padding:8px 0}
-      .nav{padding:16px 0}.brand{font-size:16px}.mark{width:29px;height:29px}
-      .hero{padding:46px 0 46px}.lead{font-size:18px}.hero-actions{flex-direction:column;align-items:stretch}.btn{width:100%}
-      .micro{display:grid;gap:9px}
-      .offer-card{padding:24px;border-radius:20px}.price strong{font-size:43px}
-      .trust-grid{grid-template-columns:1fr}.trust-item{border-right:0!important;border-bottom:1px solid var(--line)}.trust-item:last-child{border-bottom:0}
-      section{padding:60px 0}.section-copy{font-size:16px}
-      .card,.step,.scope-card{padding:23px}
-      .contact{padding-bottom:60px}.contact-panel{padding:30px 24px;border-radius:19px}
-      .footer-main{flex-direction:column}
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ProfessionalService",
-    "name":"Ecommerce Catalogue Rescue",
-    "description":"White-label product catalogue cleanup and WooCommerce import preparation for UK web and ecommerce agencies.",
-    "email":"shopairlind@gmail.com",
-    "areaServed":"United Kingdom"
-  }
-  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Ecommerce Catalogue Rescue","description":"Product catalogue cleanup and WooCommerce import preparation for UK web and ecommerce agencies.","email":"shopairlind@gmail.com","areaServed":"United Kingdom"}</script>
 </head>
 <body>
-  <div class="topbar">
-    <div class="wrap"><span><strong>For UK web & ecommerce agencies</strong> · white-label catalogue operations</span><span>Fixed-scope pilot · £195</span></div>
-  </div>
-
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="./" aria-label="Ecommerce Catalogue Rescue home">
-        <span class="mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M7 7h10M7 12h10M7 17h6" stroke-linecap="round"/><rect x="3.5" y="3.5" width="17" height="17" rx="4"/></svg>
-        </span>
-        Ecommerce Catalogue Rescue
-      </a>
-      <div class="navlinks">
+  <header class="site-header">
+    <div class="shell header-row">
+      <a class="wordmark" href="./"><span class="wordmark-mark">C</span><span>Ecommerce Catalogue Rescue</span></a>
+      <nav class="header-nav" aria-label="Primary">
         <a href="#service">Service</a>
-        <a href="#process">Process</a>
         <a href="#scope">Scope</a>
-        <a class="nav-cta" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Discuss a pilot</a>
-      </div>
-    </nav>
-
-    <main>
-      <section class="hero">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> White-label WooCommerce operations</div>
-          <h1>Catalogue cleanup your developers shouldn’t be doing.</h1>
-          <p class="lead">We turn messy client product files into controlled, documented WooCommerce import candidates — so your team can stay focused on build, migration and client work.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Discuss a £195 pilot
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="btn btn-secondary" href="#scope">View exact scope</a>
-          </div>
-          <div class="micro">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>No production access required</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>No customer or order data</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Documented changes & exceptions</span>
-          </div>
-        </div>
-
-        <aside class="offer-card" aria-label="Pilot offer">
-          <div class="offer-label">Fixed-scope pilot</div>
-          <div class="price"><strong>£195</strong><span>one-off</span></div>
-          <p class="offer-sub">Up to 250 simple-product rows in one client-supplied CSV.</p>
-          <div class="offer-rule"></div>
-          <ul class="checklist">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cleaned, import-ready candidate CSV</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Source-linked change log</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Missing / ambiguous data exception list</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Staging-import checklist</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>One agreed mapping + one correction round</li>
-          </ul>
-          <p class="offer-note">Payment is requested only after the file shape, mapping and written scope are confirmed.</p>
-        </aside>
-      </section>
-    </main>
-  </div>
-
-  <div class="trust-strip" aria-label="Service principles">
-    <div class="wrap trust-grid">
-      <div class="trust-item"><strong>Agency-first</strong><span>You keep the client relationship and final approval.</span></div>
-      <div class="trust-item"><strong>Controlled scope</strong><span>No open-ended spreadsheet work or surprise extras.</span></div>
-      <div class="trust-item"><strong>Audit-friendly</strong><span>Changes and unresolved exceptions are documented.</span></div>
-      <div class="trust-item"><strong>Fast turnaround</strong><span>Two-business-day target after usable input is confirmed.</span></div>
+        <a href="#process">Process</a>
+        <a href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
   <main>
-    <section id="service">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="section-kicker">The service</div><h2>Turn repetitive catalogue work into a clean handoff.</h2></div>
-          <p class="section-copy">Designed for migrations, rebuilds, launches and ongoing WooCommerce support where product data arrives inconsistent, incomplete or simply too time-consuming for senior agency staff.</p>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg></div>
-            <h3>Catalogue cleanup</h3>
-            <p>Normalise agreed fields, remove obvious formatting inconsistencies and prepare a controlled import candidate from the supplied source file.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="m9 11 2 2 4-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3 4.5 6v5c0 4.4 3 8.5 7.5 10 4.5-1.5 7.5-5.6 7.5-10V6L12 3Z"/></svg></div>
-            <h3>QA & exception handling</h3>
-            <p>Document what changed and isolate missing or ambiguous data for a human decision instead of quietly inventing values.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M7 7h10v10H7z"/><path d="m9 3-4 4 4 4M15 21l4-4-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Migration preparation</h3>
-            <p>Reduce the spreadsheet burden before WooCommerce imports, replatforming, store rebuilds and catalogue restructuring.</p>
-          </article>
+    <div class="shell hero">
+      <div>
+        <div class="hero-kicker">White-label catalogue operations for agencies</div>
+        <h1>Clean product data.<br><em>Before</em> it becomes developer work.</h1>
+        <p class="hero-intro">We take messy product files, clean and document them, and return an import-ready candidate for your team to review. You keep the client relationship and control the final import.</p>
+        <a class="hero-cta" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Discuss a pilot <span class="arrow">↗</span></a>
+      </div>
+      <aside class="hero-side" aria-label="Pilot summary">
+        <div class="hero-side-row"><span>Pilot fee</span><span>£195</span></div>
+        <div class="hero-side-row"><span>Catalogue size</span><span>Up to 250 rows</span></div>
+        <div class="hero-side-row"><span>Product type</span><span>Simple products</span></div>
+        <div class="hero-side-row"><span>Turnaround target</span><span>2 business days</span></div>
+        <div class="hero-side-row"><span>Payment</span><span>After scope approval</span></div>
+      </aside>
+    </div>
+
+    <section class="shell section" id="service">
+      <div class="section-label">01 / Service</div>
+      <div class="section-main">
+        <h2>A narrow service for the work that sits between a client spreadsheet and a safe import.</h2>
+        <p class="lede">Built for WooCommerce migrations, rebuilds, launches and catalogue maintenance where repetitive product-data work starts eating into senior delivery time.</p>
+        <div class="service-rows">
+          <div class="service-row"><div class="service-no">01</div><h3>Clean</h3><p>Normalise agreed fields, remove obvious formatting inconsistencies and prepare a controlled candidate file without inventing missing business decisions.</p></div>
+          <div class="service-row"><div class="service-no">02</div><h3>Check</h3><p>Separate what can be corrected from what needs client or agency judgement, so uncertainty is visible rather than silently guessed.</p></div>
+          <div class="service-row"><div class="service-no">03</div><h3>Document</h3><p>Return the cleaned file with a source-linked change log, exception list and a practical staging-import checklist.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="process" id="process">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="section-kicker">Process</div><h2>A simple subcontractor workflow.</h2></div>
-          <p class="section-copy">No client-facing takeover, no production credentials and no opaque automation. Your agency remains in control of decisions and the final import.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><div class="step-num">Step 01</div><h3>Confirm fit & mapping</h3><p>Send a representative sample or describe the file. We agree the fields, source rules, exclusions and what counts as an exception.</p></article>
-          <article class="step"><div class="step-num">Step 02</div><h3>Clean, QA & document</h3><p>We process the agreed CSV and produce the candidate file, change log, exception list and staging checklist.</p></article>
-          <article class="step"><div class="step-num">Step 03</div><h3>Your team approves</h3><p>Your agency or client resolves commercial ambiguities and performs or approves the final WooCommerce import.</p></article>
+    <section class="shell section">
+      <div class="section-label">02 / Deliverables</div>
+      <div class="section-main">
+        <h2>What comes back.</h2>
+        <div class="deliverables">
+          <div class="deliverable"><div><strong>Import-ready candidate CSV</strong><span>A cleaned version of the agreed source file, prepared against the confirmed mapping.</span></div></div>
+          <div class="deliverable"><div><strong>Source-linked change log</strong><span>A record of the corrections made, so your team can review what changed and why.</span></div></div>
+          <div class="deliverable"><div><strong>Exception list</strong><span>Missing, conflicting or ambiguous product information that should not be guessed.</span></div></div>
+          <div class="deliverable"><div><strong>Staging-import checklist</strong><span>A concise preflight list for your team before anything touches a production store.</span></div></div>
+          <div class="deliverable"><div><strong>One correction round</strong><span>For issues that fall within the scope and rules agreed before work begins.</span></div></div>
         </div>
       </div>
     </section>
 
-    <section id="scope">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="section-kicker">Pilot scope</div><h2>Clear boundaries before work starts.</h2></div>
-          <p class="section-copy">The pilot is deliberately narrow. It is intended to prove whether catalogue operations can save your team time without creating a new project-management burden.</p>
-        </div>
-        <div class="scope-wrap">
-          <div class="scope-card">
-            <h3>Included in the £195 pilot</h3>
-            <ul class="scope-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>One client-supplied CSV</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 250 simple-product rows</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>One agreed field mapping and source-rule set</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cleaned candidate CSV + documented corrections</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Exception list + staging-import checklist</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>One correction round</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Two-business-day target after usable input and rules are confirmed</li>
+    <section class="shell section" id="scope">
+      <div class="section-label">03 / Scope</div>
+      <div class="section-main">
+        <h2>Fixed enough to be useful. Narrow enough to stay predictable.</h2>
+        <div class="scope-grid">
+          <div class="scope-col">
+            <div class="scope-title">Included in the £195 pilot</div>
+            <ul>
+              <li>One client-supplied CSV</li>
+              <li>Up to 250 simple-product rows</li>
+              <li>One agreed field mapping</li>
+              <li>Catalogue cleanup and QA against agreed source rules</li>
+              <li>One correction round</li>
+              <li>Two-business-day target after usable input is confirmed</li>
             </ul>
           </div>
-          <div class="scope-card dark">
-            <h3>Outside the standard pilot</h3>
-            <ul class="scope-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>Customer, order or payment-data processing</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>Direct production-store access or automatic import</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>Unlimited manual copywriting or enrichment</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>Variable / bespoke product logic unless separately agreed</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>Guessing commercial decisions where source data is ambiguous</li>
+          <div class="scope-col">
+            <div class="scope-title dark">Outside the standard pilot</div>
+            <ul>
+              <li>Customer, order or payment data</li>
+              <li>Automatic production-store imports</li>
+              <li>Unbounded product copywriting</li>
+              <li>Variable or highly bespoke product logic unless separately agreed</li>
+              <li>Commercial decisions where the source data is ambiguous</li>
+              <li>Additional source systems or mappings unless separately agreed</li>
             </ul>
           </div>
         </div>
-        <div class="data-note"><strong>Data handling:</strong> the standard pilot is designed around product catalogue data only. Please do not send customer, order or payment information. Confidential files are accepted only after scope and handoff method are agreed.</div>
+        <div class="note"><strong>Data handling:</strong> The pilot is designed for product catalogue data only. Do not send customer, order or payment information. Confidential source files are accepted only after the project scope and handling method are agreed.</div>
       </div>
     </section>
 
-    <section>
-      <div class="wrap faq">
-        <div><div class="section-kicker">FAQ</div><h2>Before you hand over a catalogue.</h2></div>
-        <div class="faq-list">
-          <div class="faq-item"><h3>Do you need access to the WooCommerce store?</h3><p>No. The standard pilot works from the agreed CSV and returns an import candidate and QA documentation. Your agency performs or approves the final import.</p></div>
-          <div class="faq-item"><h3>What happens when information is missing?</h3><p>It is flagged in the exception list. We do not make silent commercial assumptions about prices, categories, product attributes or other business decisions.</p></div>
-          <div class="faq-item"><h3>Can this be delivered white-label?</h3><p>Yes. The service is designed as subcontractor support for agencies. Your client relationship stays with you.</p></div>
-          <div class="faq-item"><h3>What if the catalogue is larger or more complex?</h3><p>We scope it separately after reviewing a representative sample. The £195 pilot is intentionally limited to simple products and a single agreed mapping.</p></div>
+    <section class="shell section" id="process">
+      <div class="section-label">04 / Process</div>
+      <div class="section-main">
+        <h2>Four steps. No black box.</h2>
+        <div class="process-grid">
+          <div class="process-step"><div class="process-num">01</div><h3>Confirm fit</h3><p>Send a representative sample or describe the catalogue. We confirm whether the pilot is appropriate.</p></div>
+          <div class="process-step"><div class="process-num">02</div><h3>Lock the rules</h3><p>We agree the mapping, source rules, exclusions and what should be escalated instead of guessed.</p></div>
+          <div class="process-step"><div class="process-num">03</div><h3>Clean + document</h3><p>We process the agreed file and return the candidate CSV, change log, exceptions and checklist.</p></div>
+          <div class="process-step"><div class="process-num">04</div><h3>Your team approves</h3><p>Your agency or client makes ambiguous commercial decisions and performs or approves the final import.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="contact">
-      <div class="wrap">
-        <div class="contact-panel">
-          <div><h2>Have a catalogue that is eating agency time?</h2><p>Send a short description of the file or a representative sample. We will confirm whether it fits the pilot before any payment is requested.</p></div>
-          <a class="btn" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Email the project</a>
+    <section class="cta-band">
+      <div class="shell cta-inner">
+        <div>
+          <div class="section-label">Start with one file</div>
+          <h2>If the catalogue is messy, send the shape of the problem.</h2>
         </div>
+        <a href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">shopairlind@gmail.com ↗</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-main">
-        <div><div class="footer-brand">Ecommerce Catalogue Rescue</div><div>White-label catalogue operations for ecommerce agencies.</div></div>
-        <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="refunds.html">Cancellation & refunds</a><a href="mailto:shopairlind@gmail.com">Contact</a></div>
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-row">
+        <div>© 2026 Ecommerce Catalogue Rescue</div>
+        <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="refunds.html">Cancellation & refunds</a></div>
       </div>
-      <div class="legal">Ecommerce Catalogue Rescue is operated through the Stripe account of Mille Sandbjerg Lind, Denmark. Service communication and delivery are handled by Philip Lind. Independent service; not affiliated with or endorsed by WooCommerce or Automattic.</div>
+      <div class="footer-legal">Ecommerce Catalogue Rescue is operated through the Stripe account of Mille Sandbjerg Lind, Denmark. Service communication and delivery are handled by Philip Lind. Independent service; not affiliated with or endorsed by WooCommerce or Automattic.</div>
     </div>
   </footer>
 </body>
