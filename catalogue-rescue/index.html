@@ -3,123 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f3f1eb">
+  <meta name="theme-color" content="#f6f4ee">
   <title>Ecommerce Catalogue Rescue — Product catalogue cleanup for agencies</title>
   <meta name="description" content="White-label product catalogue cleanup, QA and WooCommerce import preparation for UK web and ecommerce agencies. Fixed-scope pilot: £195.">
   <meta property="og:title" content="Ecommerce Catalogue Rescue">
   <meta property="og:description" content="Product catalogue cleanup and WooCommerce import preparation for UK agencies.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="site-v2.css?v=20260930b">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Ecommerce Catalogue Rescue","description":"Product catalogue cleanup and WooCommerce import preparation for UK web and ecommerce agencies.","email":"shopairlind@gmail.com","areaServed":"United Kingdom"}</script>
 </head>
 <body>
   <header class="site-header">
-    <div class="shell header-row">
-      <a class="wordmark" href="./"><span class="wordmark-mark">C</span><span>Ecommerce Catalogue Rescue</span></a>
-      <nav class="header-nav" aria-label="Primary">
+    <div class="shell nav">
+      <a class="brand" href="./"><span class="brand-box">CR</span><span>Ecommerce Catalogue Rescue</span></a>
+      <nav class="navlinks" aria-label="Primary">
         <a href="#service">Service</a>
         <a href="#scope">Scope</a>
         <a href="#process">Process</a>
-        <a href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Contact</a>
+        <a href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Start a pilot ↗</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="shell hero">
-      <div>
-        <div class="hero-kicker">White-label catalogue operations for agencies</div>
-        <h1>Clean product data.<br><em>Before</em> it becomes developer work.</h1>
-        <p class="hero-intro">We take messy product files, clean and document them, and return an import-ready candidate for your team to review. You keep the client relationship and control the final import.</p>
-        <a class="hero-cta" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Discuss a pilot <span class="arrow">↗</span></a>
+    <section class="shell hero">
+      <div class="hero-copy">
+        <div>
+          <div class="kicker">White-label ecommerce operations / UK agencies</div>
+          <h1>We fix<br>product<br><span class="accent">catalogues.</span></h1>
+        </div>
+        <div class="hero-bottom">
+          <p class="hero-intro">Messy product data should not consume developer time. We clean, QA and document client-supplied catalogue files before they reach WooCommerce.</p>
+          <a class="hero-cta" href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">Discuss one file ↗</a>
+        </div>
       </div>
-      <aside class="hero-side" aria-label="Pilot summary">
-        <div class="hero-side-row"><span>Pilot fee</span><span>£195</span></div>
-        <div class="hero-side-row"><span>Catalogue size</span><span>Up to 250 rows</span></div>
-        <div class="hero-side-row"><span>Product type</span><span>Simple products</span></div>
-        <div class="hero-side-row"><span>Turnaround target</span><span>2 business days</span></div>
-        <div class="hero-side-row"><span>Payment</span><span>After scope approval</span></div>
+
+      <aside class="hero-art" aria-label="Example catalogue cleanup">
+        <div class="art-top"><span>Catalogue / Sample view</span><span>Preflight 01</span></div>
+        <div class="csv">
+          <div class="csv-row csv-head"><span>#</span><span>name</span><span>sku</span><span>price</span></div>
+          <div class="csv-row"><span>01</span><span>Classic Tee — Navy</span><span>TEE-NVY-M</span><span>24.00</span></div>
+          <div class="csv-row"><span>02</span><span class="bad">classic tee navy</span><span class="bad">tee_nvy_m</span><span class="bad">£24</span></div>
+          <div class="csv-row"><span>03</span><span class="good">Classic Tee — Stone</span><span class="good">TEE-STN-M</span><span class="good">24.00</span></div>
+          <div class="csv-row"><span>04</span><span>Overshirt — Black</span><span>OVR-BLK-L</span><span>68.00</span></div>
+          <div class="csv-row"><span>05</span><span class="bad">overshirt black </span><span class="bad">OVRBLKL</span><span class="bad">68 GBP</span></div>
+        </div>
+        <div class="art-switch"><div>Source file</div><div class="on">Clean candidate</div></div>
+        <div class="art-meta">
+          <div><b>Rows in pilot</b><span>≤ 250</span></div>
+          <div><b>Delivery target</b><span>2 days</span></div>
+          <div><b>Output</b><span>CSV + QA log</span></div>
+          <div><b>Pilot fee</b><span>£195</span></div>
+        </div>
       </aside>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="shell ticker-inner">
+        <span>WooCommerce migrations</span><span class="ticker-dot">●</span><span>Catalogue QA</span><span class="ticker-dot">●</span><span>Import preparation</span><span class="ticker-dot">●</span><span>Exception logging</span><span class="ticker-dot">●</span><span>White-label delivery</span>
+      </div>
     </div>
 
     <section class="shell section" id="service">
-      <div class="section-label">01 / Service</div>
+      <div class="section-index">01 / Service</div>
       <div class="section-main">
-        <h2>A narrow service for the work that sits between a client spreadsheet and a safe import.</h2>
-        <p class="lede">Built for WooCommerce migrations, rebuilds, launches and catalogue maintenance where repetitive product-data work starts eating into senior delivery time.</p>
-        <div class="service-rows">
-          <div class="service-row"><div class="service-no">01</div><h3>Clean</h3><p>Normalise agreed fields, remove obvious formatting inconsistencies and prepare a controlled candidate file without inventing missing business decisions.</p></div>
-          <div class="service-row"><div class="service-no">02</div><h3>Check</h3><p>Separate what can be corrected from what needs client or agency judgement, so uncertainty is visible rather than silently guessed.</p></div>
-          <div class="service-row"><div class="service-no">03</div><h3>Document</h3><p>Return the cleaned file with a source-linked change log, exception list and a practical staging-import checklist.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="section-label">02 / Deliverables</div>
-      <div class="section-main">
-        <h2>What comes back.</h2>
-        <div class="deliverables">
-          <div class="deliverable"><div><strong>Import-ready candidate CSV</strong><span>A cleaned version of the agreed source file, prepared against the confirmed mapping.</span></div></div>
-          <div class="deliverable"><div><strong>Source-linked change log</strong><span>A record of the corrections made, so your team can review what changed and why.</span></div></div>
-          <div class="deliverable"><div><strong>Exception list</strong><span>Missing, conflicting or ambiguous product information that should not be guessed.</span></div></div>
-          <div class="deliverable"><div><strong>Staging-import checklist</strong><span>A concise preflight list for your team before anything touches a production store.</span></div></div>
-          <div class="deliverable"><div><strong>One correction round</strong><span>For issues that fall within the scope and rules agreed before work begins.</span></div></div>
+        <h2>The boring work, done properly.</h2>
+        <div class="rows">
+          <div class="row"><div class="row-no">01</div><h3>Clean</h3><p>Normalise agreed fields, fix obvious formatting inconsistencies and prepare a controlled import candidate without inventing missing business decisions.</p></div>
+          <div class="row"><div class="row-no">02</div><h3>Check</h3><p>Separate what can be corrected from what needs client or agency judgement, so uncertainty is visible instead of silently guessed.</p></div>
+          <div class="row"><div class="row-no">03</div><h3>Document</h3><p>Return the cleaned file with a source-linked change log, exception list and a staging-import checklist your team can actually use.</p></div>
+          <div class="row"><div class="row-no">04</div><h3>Hand back</h3><p>Your agency keeps the client relationship, makes ambiguous commercial decisions and performs or approves the final import.</p></div>
         </div>
       </div>
     </section>
 
     <section class="shell section" id="scope">
-      <div class="section-label">03 / Scope</div>
+      <div class="section-index">02 / Scope</div>
       <div class="section-main">
-        <h2>Fixed enough to be useful. Narrow enough to stay predictable.</h2>
-        <div class="scope-grid">
-          <div class="scope-col">
-            <div class="scope-title">Included in the £195 pilot</div>
+        <h2>One file. One mapping. No scope fog.</h2>
+        <div class="scope">
+          <div class="scope-block">
+            <div class="scope-title">Included / £195 pilot</div>
             <ul>
               <li>One client-supplied CSV</li>
               <li>Up to 250 simple-product rows</li>
               <li>One agreed field mapping</li>
-              <li>Catalogue cleanup and QA against agreed source rules</li>
+              <li>Catalogue cleanup + QA against agreed source rules</li>
+              <li>Import-ready candidate CSV</li>
+              <li>Source-linked change log + exception list</li>
+              <li>Staging-import checklist</li>
               <li>One correction round</li>
-              <li>Two-business-day target after usable input is confirmed</li>
             </ul>
           </div>
-          <div class="scope-col">
-            <div class="scope-title dark">Outside the standard pilot</div>
+          <div class="scope-block">
+            <div class="scope-title">Not included by default</div>
             <ul>
               <li>Customer, order or payment data</li>
               <li>Automatic production-store imports</li>
-              <li>Unbounded product copywriting</li>
-              <li>Variable or highly bespoke product logic unless separately agreed</li>
-              <li>Commercial decisions where the source data is ambiguous</li>
-              <li>Additional source systems or mappings unless separately agreed</li>
+              <li>Unlimited product copywriting</li>
+              <li>Variable / highly bespoke catalogue logic</li>
+              <li>Commercial decisions where source data is ambiguous</li>
+              <li>Additional source systems or mappings</li>
             </ul>
           </div>
         </div>
-        <div class="note"><strong>Data handling:</strong> The pilot is designed for product catalogue data only. Do not send customer, order or payment information. Confidential source files are accepted only after the project scope and handling method are agreed.</div>
       </div>
     </section>
 
     <section class="shell section" id="process">
-      <div class="section-label">04 / Process</div>
+      <div class="section-index">03 / Process</div>
       <div class="section-main">
-        <h2>Four steps. No black box.</h2>
-        <div class="process-grid">
-          <div class="process-step"><div class="process-num">01</div><h3>Confirm fit</h3><p>Send a representative sample or describe the catalogue. We confirm whether the pilot is appropriate.</p></div>
-          <div class="process-step"><div class="process-num">02</div><h3>Lock the rules</h3><p>We agree the mapping, source rules, exclusions and what should be escalated instead of guessed.</p></div>
-          <div class="process-step"><div class="process-num">03</div><h3>Clean + document</h3><p>We process the agreed file and return the candidate CSV, change log, exceptions and checklist.</p></div>
-          <div class="process-step"><div class="process-num">04</div><h3>Your team approves</h3><p>Your agency or client makes ambiguous commercial decisions and performs or approves the final import.</p></div>
+        <h2>No black box.</h2>
+        <div class="rows">
+          <div class="row"><div class="row-no">01</div><h3>Confirm fit</h3><p>You send a representative sample or describe the catalogue. We confirm whether the fixed pilot is appropriate.</p></div>
+          <div class="row"><div class="row-no">02</div><h3>Lock rules</h3><p>We agree the mapping, source rules, exclusions and what should be escalated instead of guessed.</p></div>
+          <div class="row"><div class="row-no">03</div><h3>Clean + QA</h3><p>We process the agreed file, document changes and isolate exceptions that need a decision.</p></div>
+          <div class="row"><div class="row-no">04</div><h3>Agency approval</h3><p>Your team reviews the output and performs or approves the final WooCommerce import.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="shell cta-inner">
-        <div>
-          <div class="section-label">Start with one file</div>
-          <h2>If the catalogue is messy, send the shape of the problem.</h2>
-        </div>
+    <section class="shell price-band">
+      <div class="price-copy">
+        <div class="section-index">04 / Pilot</div>
+        <h2>Start with one catalogue.</h2>
+        <p>Payment is requested only after the scope, mapping and source rules are confirmed by email. The pilot is deliberately narrow so both sides know exactly what is being delivered.</p>
+      </div>
+      <div class="price-box">
+        <div class="label">Fixed pilot</div>
+        <div class="amount"><span>£</span>195</div>
+        <div class="small">Up to 250 simple-product rows</div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="shell cta-grid">
+        <h2>Send the messy file.<br>Keep your developers on development.</h2>
         <a href="mailto:shopairlind@gmail.com?subject=Catalogue%20Rescue%20pilot">shopairlind@gmail.com ↗</a>
       </div>
     </section>
